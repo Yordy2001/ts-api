@@ -6,4 +6,6 @@ router.get('/', (req:Request, res:Response)=>{
     res.send("se guardan los items")
 })
 
+router.post('/')
+
 export {router};
