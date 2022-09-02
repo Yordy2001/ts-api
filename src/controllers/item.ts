@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { insertCar, getCars, getCar, updateCar, deleteCar } from "../services/items.service";
-import { handleHTTP } from "../utils/error.handdles";
+import { handleHTTP } from "../utils/error.handle";
 
 const getItem = ({params}: Request, res: Response) => {
   try {
