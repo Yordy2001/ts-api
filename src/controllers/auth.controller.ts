@@ -4,6 +4,11 @@ import { handleHTTP } from "../utils/error.handle"
 
 const login = async ( {body}:Request, res:Response ) => {
     const responseUser = await loginUser(body)
+
+
+    if(responseUser === "PASSWORD_INCORRECT"){
+        res.status(401).send(responseUser)
+    }
     res.send(responseUser)
 }
 
