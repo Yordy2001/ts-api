@@ -1,21 +1,25 @@
 import { Request, Response } from "express";
+import { RequestExt } from "../interfaces/req-ext.inteface";
 import { insertCar, getCars, getCar, updateCar, deleteCar } from "../services/items.service";
 import { handleHTTP } from "../utils/error.handle";
 
-const getItem = ({params}: Request, res: Response) => {
+const getItem = async ({params}: Request, res: Response) => {
   try {
     const {id} = params
-    const response = getCar(id)
+    const response = await getCar(id)
     res.send(response)
   } catch (error) {
     handleHTTP(res, "ERROR_GET_ITEM", error);
   }
 };
 
-const getItems = async (req: Request, res: Response) => {
+const getItems = async (req: RequestExt, res: Response) => {
   try {
     const response = await getCars()
-    res.send(response)
+    res.send({
+      data: response,
+      user: req.user
+    })
   } catch (error) {
     handleHTTP(res, "ERRORS_GET_ITEM", error);
   }
