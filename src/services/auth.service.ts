@@ -33,7 +33,13 @@ const loginUser = async ({email, password}:IUser) => {
         token,
         user: checkIs
     }
+
     return data;
 }
+
+const logout = async(req: any) =>{
+   req.session.isAuth = false 
+}
+
 
 export { registerUser, loginUser }
