@@ -11,6 +11,7 @@ const checkJwt = async (req: RequestExt, res: Response, next: NextFunction) => {
     if (!isOk) {
       res.status(401).send("INVALID_TOKEN");
     }
+  
     req.user = isOk;
     next();
   } catch (error) {
