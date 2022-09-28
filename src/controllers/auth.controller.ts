@@ -1,5 +1,5 @@
 import { Response, Request } from "express"
-import { registerUser, loginUser } from "../services/auth.service"
+import { registerUser, loginUser, logOutUser } from "../services/auth.service"
 import { handleHTTP } from "../utils/error.handle"
 
 type Props = {
@@ -7,8 +7,9 @@ type Props = {
     res: Response 
 }
 
-const login = async ( {req, res}:Props) => {
-    const { body } = req.body
+const login = async ( {req, res}:Props ) => {
+    
+    const { body } = req
     try {
         const responseUser = await loginUser(body)
 
@@ -16,10 +17,12 @@ const login = async ( {req, res}:Props) => {
             return res.status(401).send(responseUser)
         }
         
-        req.session = registerUser 
-        req.session.isAuth = true
-        console.log(req.session);
-        res.send(responseUser)
+        if(req.session){
+            req.session.user = responseUser 
+            req.session.isAuth = true
+        }
+
+        res.status(200).json(responseUser)
     } catch (error) {
         handleHTTP(res, "ERROR_LOGIN_USER", error);
     }
@@ -35,4 +38,13 @@ const register = async ( {req, res}:Props) => {
     }
 }
 
-export { login, register }
+const logOut = async ( {req, res}:Props ) =>{
+    try {
+        await logOutUser(req)
+        res.status(205)
+    } catch (error) {
+        handleHTTP(res, "LOGOUT_ERROR", error)
+    }
+}
+
+export { login, register, logOut }

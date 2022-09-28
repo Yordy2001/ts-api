@@ -37,9 +37,9 @@ const loginUser = async ({email, password}:IUser) => {
     return data;
 }
 
-const logout = async(req: any) =>{
-   req.session.isAuth = false 
+const logOutUser = async(req: any) =>{
+   req.session.isAuth = false
+   req.session.user = null
 }
 
-
-export { registerUser, loginUser }
+export { registerUser, loginUser, logOutUser }
