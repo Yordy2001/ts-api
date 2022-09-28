@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express  from "express";
-import coockieParser from "cookie-parser"
+import cookieParser from "cookie-parser"
 import cookieSession from "./utils/cookie.handle";
 import cors from "cors";
 import { router } from "./routers";
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json())
-// app.use(coockieParser as PathParams)
+app.use(cookieParser())
 app.use(cookieSession)
 
 app.use(router)
