@@ -41,7 +41,7 @@ const register = async ( {req, res}:Props) => {
 const logOut = async ( {req, res}:Props ) =>{
     try {
         await logOutUser(req)
-        res.status(205)
+        res.status(200)
     } catch (error) {
         handleHTTP(res, "LOGOUT_ERROR", error)
     }

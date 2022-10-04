@@ -1,4 +1,5 @@
 import swaggerJSDoc, { OAS3Definition, OAS3Options } from "swagger-jsdoc";
+// import { login } from "../routers/*ts";
 
 const swaggerDefinition: OAS3Definition = {
   openapi: "3.0.0",
@@ -43,7 +44,7 @@ const swaggerDefinition: OAS3Definition = {
 
 const swaggerOptions: OAS3Options = {
   swaggerDefinition,
-  apis: ["./src/routes/*.ts"],
+  apis: ["./src/routers/*.ts"],
 };
 
 export default swaggerJSDoc(swaggerOptions)
