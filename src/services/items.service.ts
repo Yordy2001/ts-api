@@ -21,7 +21,7 @@ const updateCar = async (id: string, data: ICar) => {
     { _id: id },
      data,
     {
-        new: true
+      new: true
     }
     );
     return responseUpdate;

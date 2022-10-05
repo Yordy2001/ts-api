@@ -38,6 +38,28 @@ const swaggerDefinition: OAS3Definition = {
           },
         },
       },
+      item: {
+        propieties: {
+          name: {
+            type: "string",
+          },
+          color: {
+            type: "string",
+          },
+          gas: {
+            type: "string",
+          },
+          year: {
+            type: "string",
+          },
+          description: {
+            type: "string",
+          },
+          price: {
+            type: "string",
+          },
+        },
+      },
     },
   },
 };
@@ -47,4 +69,4 @@ const swaggerOptions: OAS3Options = {
   apis: ["./src/routers/*.ts"],
 };
 
-export default swaggerJSDoc(swaggerOptions)
+export default swaggerJSDoc(swaggerOptions);

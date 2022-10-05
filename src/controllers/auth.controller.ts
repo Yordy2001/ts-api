@@ -8,7 +8,7 @@ type Props = {
 }
 
 const login = async ( {req, res}:Props ) => {
-    
+   
     const { body } = req
     try {
         const responseUser = await loginUser(body)
